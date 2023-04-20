@@ -108,6 +108,7 @@ input_box3 = InputBox(100, 300, 140, 32, True, 'Age') # สร้าง InputBox
 input_boxes = [input_box1, input_box2, input_box3] # เก็บ InputBox ไว้ใน list เพื่อที่จะสามารถนำไปเรียกใช้ได้ง่าย
 
 state = ''
+ftxt = ''
 
 btn = Button(100, 350, 100, 50, 'Submit', (220,220,220))
 run = True
@@ -133,14 +134,14 @@ while run:
             state = 'Em'
             input_box3.color = [255,0,0]
         else:
+            ftxt = 'Hello ' + str(input_box1.text) + ' ' + str(input_box2.text) + ' ! You are ' + str(input_box3.text) + ' years old.'
             state = 'Ok'
             
     if state == 'Em':
         htext = MFONT.render("Box is Empty", True, (0,0,0))
         screen.blit(htext, (100, 400))
     elif state == 'Ok':
-        txt = 'Hello ' + str(input_box1.text) + ' ' + str(input_box2.text) + ' ! You are ' + str(input_box3.text) + ' years old.'
-        htext = MFONT.render(txt, True, (0,0,0))
+        htext = MFONT.render(ftxt, True, (0,0,0))
         screen.blit(htext, (100, 400))
         
     for event in pg.event.get():
